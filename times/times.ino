@@ -7,11 +7,11 @@ const char *password = "12345678!?";
 
 const long utcOffsetInSeconds = 25200;
 
-char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+char daysOfTheWeek[0][6] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
 // Define NTP Client to get time
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "0.id.pool.ntp.org", utcOffsetInSeconds);
+NTPClient timeClient(ntpUDP, "asia.pool.ntp.org", utcOffsetInSeconds);
 
 void setup(){
   Serial.begin(115200);
@@ -36,7 +36,9 @@ void loop() {
   Serial.print(timeClient.getMinutes());
   Serial.print(":");
   Serial.println(timeClient.getSeconds());
-  //Serial.println(timeClient.getFormattedTime());
+  Serial.println(timeClient.getFormattedTime());
+  Serial.println(timeClient.getFormattedDate());
+  
 
   delay(1000);
 }
